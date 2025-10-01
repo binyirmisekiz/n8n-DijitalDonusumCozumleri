@@ -10,7 +10,7 @@ async function loadSidebar() {
   let html = localStorage.getItem("sidebar-html");
   if (!html) {
     console.log("Cache yok → fetch ediliyor...");
-    const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
+    const res = await fetch("https://raw.githubusercontent.com/binyirmisekiz/n8n-DijitalDonusumCozumleri/refs/heads/main/sidebar.html");
     html = await res.text();
     localStorage.setItem("sidebar-html", html);
   } else {
