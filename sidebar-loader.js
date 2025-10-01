@@ -21,7 +21,8 @@ async function loadSidebar() {
       sidebar.classList.toggle("active");
     });
   }
-hamburgerBtn.addEventListener("click", () => sidebar.classList.toggle("active"));
+
+  hamburgerBtn.addEventListener("click", () => sidebar.classList.toggle("active"));
 }
 
 loadSidebar();
