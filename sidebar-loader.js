@@ -5,7 +5,7 @@ async function loadSidebar() {
   let html = localStorage.getItem("sidebar-html");
   if (!html) {
     // yoksa fetch et
-    const res = await fetch("sidebar.html");
+    const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
     html = await res.text();
     localStorage.setItem("sidebar-html", html);
   }
