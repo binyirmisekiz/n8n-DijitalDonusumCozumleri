@@ -1,0 +1,139 @@
+/* =========================================================
+   GENEL TANIMLAR
+   ========================================================= */
+:root {
+  --accent:#c1442e;
+  --accent-dark:#a63622;
+  --muted:#f4f4f4;
+  --bg:#1e2a38;
+  --card-bg:#fff;
+  --ok:#14833b;
+  --warn:#d64545;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fa;
+  color: #0f1724;
+}
+
+/* Sidebar (ortak) */
+.sidebar {
+  position: fixed; left: 0; top: 0; bottom: 0;
+  width: 220px; background: #1e2a38; color: #fff;
+  padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+.sidebar h2 { font-size: 18px; margin-bottom: 20px; }
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar ul li { margin-bottom: 10px; }
+.sidebar ul li a {
+  color: #fff; text-decoration: none;
+  padding: 8px 12px; display: block;
+  border-radius: 6px; transition: background .2s;
+}
+.sidebar ul li a:hover { background: #2e3c55; }
+
+/* Footer (ortak) */
+.footer {
+  position: fixed; bottom: 0; left: 220px; right: 0;
+  background: #f1f1f1; padding: 10px; text-align: center;
+  font-size: 12px; color: #555;
+  border-top: 1px solid #ddd;
+}
+
+/* Modal (ortak) */
+.modal {
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.4);
+  justify-content:center;align-items:center;z-index:1000;
+}
+.modal-content {
+  background:#fff;padding:20px;border-radius:12px;
+  max-width:450px;width:90%;max-height:80%;overflow-y:auto;
+}
+.close-btn {
+  background:#0f1724;color:#fff;padding:6px 12px;
+  border:none;border-radius:8px;cursor:pointer;margin-top:10px;
+}
+
+/* Genel buton stili */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+button.ok { background: var(--ok); color:#fff; }
+button.warn { background: var(--warn); color:#fff; }
+
+/* =========================================================
+   TESLİM İŞLEMLERİ
+   ========================================================= */
+.teslim-wrap {
+  max-width: 800px; margin: auto;
+  background: #fff; padding: 20px;
+  border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.teslim-card {
+  border: 1px solid #ddd;
+  padding: 15px; border-radius: 8px;
+  margin-bottom: 12px; background: #fafafa;
+}
+.teslim-card h3 { margin-top: 0; font-size: 16px; }
+
+/* =========================================================
+   KARGO KAYIT
+   ========================================================= */
+.kargo-form {
+  max-width: 600px; margin: auto;
+  background: #fff; padding: 20px;
+  border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.kargo-form label {
+  display: block; margin-top: 10px;
+  font-weight: bold;
+}
+.kargo-form input, .kargo-form select {
+  width: 100%; padding: 8px;
+  border: 1px solid #ccc; border-radius: 6px;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   KARGO TAKİBİ
+   ========================================================= */
+.kargo-list {
+  max-width: 700px; margin: auto;
+  background: #fff; padding: 20px;
+  border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.kargo-item {
+  padding: 12px; border-bottom: 1px solid #eee;
+}
+.kargo-item:last-child { border-bottom: none; }
+.kargo-status { font-weight: bold; }
+
+/* =========================================================
+   FİRMA KAYIT
+   ========================================================= */
+.firma-wrap {
+  max-width: 600px; margin: auto;
+  background: #fff; padding: 20px;
+  border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.firma-item {
+  padding: 12px; border-bottom: 1px solid #e6e9ee;
+  cursor: pointer; transition: background .2s;
+}
+.firma-item:hover { background:#f0f0f0; }
+.firma-item:last-child { border-bottom:none; }
+
+.info-row { margin-bottom: 8px; }
+.label { font-weight: 600; }
+
+
+
+
