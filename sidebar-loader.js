@@ -10,9 +10,15 @@ async function loadSidebar() {
   let html = localStorage.getItem("sidebar-html");
   if (!html) {
     console.log("Cache yok → fetch ediliyor...");
-    const res = await fetch("https://raw.githubusercontent.com/binyirmisekiz/n8n-DijitalDonusumCozumleri/refs/heads/main/sidebar.html");
-    html = await res.text();
-    localStorage.setItem("sidebar-html", html);
+    try {
+      const res = await fetch("https://raw.githubusercontent.com/binyirmisekiz/n8n-DijitalDonusumCozumleri/main/sidebar.html");
+      if (!res.ok) throw new Error("Fetch başarısız: " + res.status);
+      html = await res.text();
+      localStorage.setItem("sidebar-html", html);
+    } catch (err) {
+      console.error("Sidebar fetch hatası:", err);
+      return;
+    }
   } else {
     console.log("Cache bulundu → localStorage'dan yükleniyor...");
   }
@@ -20,17 +26,17 @@ async function loadSidebar() {
   container.innerHTML = html;
   console.log("Sidebar HTML eklendi.");
 
-  // Hamburger
+  // Hamburger menü kontrolü
   const sidebar = document.getElementById("sidebar");
   const hamburgerBtn = document.getElementById("hamburgerBtn");
 
-  if (hamburgerBtn) {
+  if (hamburgerBtn && sidebar) {
     hamburgerBtn.addEventListener("click", () => {
       sidebar.classList.toggle("active");
     });
     console.log("Hamburger butonu bağlandı.");
   } else {
-    console.warn("Hamburger butonu bulunamadı!");
+    console.warn("Hamburger veya Sidebar bulunamadı!");
   }
 }
 
