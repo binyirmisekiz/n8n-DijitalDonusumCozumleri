@@ -1,49 +1,48 @@
 async function loadSidebar() {
-  console.log("loadSidebar: Başladı");
+  console.log("[Sidebar] Başlatıldı");
+  
+  const wrapper = document.getElementById("sidebar-wrapper");
+  if (!wrapper) {
+    console.error("[Sidebar] wrapper bulunamadı!");
+    return;
+  }
+  console.log("[Sidebar] wrapper bulundu:", wrapper);
 
-  const container = document.getElementById("sidebar-container");
-  console.log("loadSidebar: container seçildi", container);
-
-  // cache varsa ordan al
+  // Cache varsa ordan al
   let html = localStorage.getItem("sidebar-html");
-  console.log("loadSidebar: localStorage html", html ? "bulundu" : "yok");
-
-  if (!html) {
-    console.log("loadSidebar: fetch işlemi başlatılıyor");
-    const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
-    console.log("loadSidebar: fetch tamamlandı", res);
-
-    html = await res.text();
-    console.log("loadSidebar: html metni alındı");
-
-    localStorage.setItem("sidebar-html", html);
-    console.log("loadSidebar: html localStorage'a kaydedildi");
-  }
-
-  // sayfaya ekle
-  if (container) {
-    container.innerHTML = html;
-    console.log("loadSidebar: container.innerHTML güncellendi");
+  if (html) {
+    console.log("[Sidebar] Cache bulundu, yükleniyor");
   } else {
-    console.warn("loadSidebar: container bulunamadı, innerHTML ayarlanamadı");
+    console.log("[Sidebar] Cache yok, fetch başlatılıyor");
+    try {
+      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
+      html = await res.text();
+      localStorage.setItem("sidebar-html", html);
+      console.log("[Sidebar] Fetch başarılı, cache kaydedildi");
+    } catch (err) {
+      console.error("[Sidebar] Fetch hatası:", err);
+      return;
+    }
   }
+
+  wrapper.innerHTML = html;
+  console.log("[Sidebar] HTML wrapper'a yüklendi");
 
   // Hamburger butonunu çalıştır
   const sidebar = document.getElementById("sidebar");
   const hamburgerBtn = document.getElementById("hamburgerBtn");
-  console.log("loadSidebar: sidebar", sidebar);
-  console.log("loadSidebar: hamburgerBtn", hamburgerBtn);
-
-  if (hamburgerBtn && sidebar) {
-    hamburgerBtn.addEventListener("click", () => {
-      console.log("Hamburger tıklandı: sidebar toggle");
-      sidebar.classList.toggle("active");
-    });
-    console.log("loadSidebar: hamburger click listener eklendi");
-  } else {
-    console.warn("loadSidebar: hamburgerBtn veya sidebar bulunamadı");
+  if (!sidebar || !hamburgerBtn) {
+    console.warn("[Sidebar] sidebar veya hamburgerBtn bulunamadı!");
+    return;
   }
+  console.log("[Sidebar] sidebar ve hamburgerBtn bulundu");
+
+  hamburgerBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    console.log("[Sidebar] Hamburger tıklandı, sidebar toggled");
+  });
+
+  console.log("[Sidebar] loadSidebar tamamlandı");
 }
 
-console.log("loadSidebar fonksiyon çağrılıyor");
 loadSidebar();
