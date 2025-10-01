@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Kargo Teslim Takip</title>
-  <!-- CSS doğru raw adres -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/style.css">
-</head>
-<body>
-
-  <!-- Sidebar container -->
-  <div id="sidebar-container"></div>
-
-  <!-- Main wrapper -->
-  <div class="main-wrapper">
-    <div class="content">
-      <img src="https://oofis.com.tr/wp-content/uploads/2023/08/oofis-logo.png" alt="Oofis">
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div>
+    <div class="logo">
+      <a href="/webhook/home">
+        <img src="{{ $json.logoUrl }}" alt="Logo">
+      </a>
     </div>
-    <footer class="footer corporate">
-      <div class="footer-left">© 2025 Dijital Dönüşüm Çözümleri</div>
-      <div class="footer-right">Açık Ofis</div>
-    </footer>
+    <ul class="menu">
+      <li><a href="/webhook/{{ $json.CompanyName }}/kargo-takip"><svg class="icon"><use href="#icon-doc"/></svg><span>Kargo Takip</span></a></li>
+      <li><a href="/webhook/{{ $json.CompanyName }}/kargo-kayit"><svg class="icon"><use href="#icon-plus"/></svg><span>Kargo Kayıt</span></a></li>
+      <li><a href="/webhook/{{ $json.CompanyName }}/kargo-teslim"><svg class="icon"><use href="#icon-box"/></svg><span>Teslim İşlemleri</span></a></li>
+      <li><a href="/webhook/{{ $json.CompanyName }}/firmalar"><svg class="icon"><use href="#icon-factory"/></svg><span>Firmalar</span></a></li>
+    </ul>
   </div>
-
-  <!-- Sidebar loader -->
-  <script src="https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar-loader.js"></script>
-</body>
-</html>
+  <div class="logout">
+    <a><svg class="icon"><use href="#icon-logout"/></svg><span>Çıkış</span></a>
+  </div>
+</div>
