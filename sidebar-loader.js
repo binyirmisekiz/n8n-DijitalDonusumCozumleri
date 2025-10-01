@@ -1,25 +1,36 @@
 async function loadSidebar() {
-  const container = document.getElementById("sidebar-container");
+  console.log("Sidebar yükleme başladı");
 
-  // cache varsa ordan al
+  const container = document.getElementById("sidebar-container");
+  if (!container) {
+    console.error("HATA: #sidebar-container bulunamadı!");
+    return;
+  }
+
   let html = localStorage.getItem("sidebar-html");
   if (!html) {
-    // yoksa fetch et
+    console.log("Cache yok → fetch ediliyor...");
     const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
     html = await res.text();
     localStorage.setItem("sidebar-html", html);
+  } else {
+    console.log("Cache bulundu → localStorage'dan yükleniyor...");
   }
 
-  // sayfaya ekle
   container.innerHTML = html;
+  console.log("Sidebar HTML eklendi.");
 
-  // Hamburger butonunu çalıştır
+  // Hamburger
   const sidebar = document.getElementById("sidebar");
   const hamburgerBtn = document.getElementById("hamburgerBtn");
+
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener("click", () => {
       sidebar.classList.toggle("active");
     });
+    console.log("Hamburger butonu bağlandı.");
+  } else {
+    console.warn("Hamburger butonu bulunamadı!");
   }
 }
 
