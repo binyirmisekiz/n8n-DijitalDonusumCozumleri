@@ -72,6 +72,10 @@ html, body {
   border-top: 1px solid #eee;
   background: #fff;
   box-sizing: border-box;
+  
+  position: relative;
+bottom: 0;
+width: 100%;
 }
 .footer-right { font-weight: 500; color: #555; }
 
