@@ -1,30 +1,26 @@
-async function loadSidebar() {
-  console.log("Sidebar yükleme başladı");
 
+async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
-  if (!container) {
-    console.error("HATA: #sidebar-container bulunamadı!");
-    return;
+
+  // cache varsa ordan al
+  let html = localStorage.getItem("sidebar-html");
+  if (!html) {
+    // yoksa fetch et
+    const res = await fetch("sidebar.html");
+    html = await res.text();
+    localStorage.setItem("sidebar-html", html);
   }
 
-  try {
-    const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
-    const html = await res.text();
-    container.innerHTML = html;
-    console.log("Sidebar yüklendi");
+  // sayfaya ekle
+  container.innerHTML = html;
 
-    // Hamburger toggle
-    const sidebar = document.getElementById("sidebar");
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
-
-    if (hamburgerBtn) {
-      hamburgerBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-      });
-      console.log("Hamburger butonu bağlandı");
-    }
-  } catch (err) {
-    console.error("Sidebar yüklenemedi:", err);
+  // Hamburger butonunu çalıştır
+  const sidebar = document.getElementById("sidebar");
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
   }
 }
 
