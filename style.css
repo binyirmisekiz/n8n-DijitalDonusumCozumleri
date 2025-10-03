@@ -84,7 +84,12 @@ html, body {
 .footer-left {
   margin-left: 220px;       /* Sidebar genişliği kadar sağa kaydır */
 }
-
+/* Mobil: Sidebar kapanınca sola yasla */
+@media (max-width: 768px) {
+  .footer-left {
+    margin-left: 0;         /* Mobilde sola yaslan */
+  }
+}
 .footer-right { 
   font-weight: 500; 
   color: #555; 
