@@ -49,16 +49,22 @@ html, body {
   display: flex;
   flex-direction: column;
   transition: margin-left 0.3s ease;
+
+    /* content'ten taşınanlar */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex: 1;   /* içerik alanı esnesin */
 }
 
-/* Content */
+/* Content 
 .content {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-}
+}*/
 .content img { max-width: 280px; height: auto; }
 
 /* Footer */
