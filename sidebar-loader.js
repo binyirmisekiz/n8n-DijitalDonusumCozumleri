@@ -4,7 +4,7 @@
     if (!container) return;
 
     try {
-      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
+      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@ad45d69/sidebar.html");
       const html = await res.text();
       container.innerHTML = html;
 
