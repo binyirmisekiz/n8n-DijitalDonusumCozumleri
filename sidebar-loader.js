@@ -16,18 +16,20 @@
       const logoImg = container.querySelector(".logo img");
       const logoAnchor = container.querySelector(".logo a");
 
+      // Logo güncellemesi
       if (logoUrl && logoImg) {
         // Kaymayı önlemek için mevcut width/height değerlerini koru
         const w = logoImg.width || logoImg.getAttribute("width") || 200;
-        const h = logoImg.height || logoImg.getAttribute("height") || "auto";
+        const h = logoImg.height || logoImg.getAttribute("height");
 
-        logoImg.setAttribute("width", w);
-        if (h !== "auto") logoImg.setAttribute("height", h);
+        if (w) logoImg.setAttribute("width", w);
+        if (h) logoImg.setAttribute("height", h);
 
         // Görseli güncelle
         logoImg.src = logoUrl;
       }
 
+      // Logo linki güncellemesi
       if (logoAnchor) {
         // Mevcut path'i al
         let pathParts = window.location.pathname.split("/").filter(Boolean);
