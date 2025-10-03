@@ -1,23 +1,23 @@
-
 async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
+  const storageKey = "sidebar-html";
 
-  // cache varsa ordan al
-  let html = localStorage.getItem("cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
+  // Cache kontrol
+  let html = localStorage.getItem(storageKey);
   if (!html) {
-    // yoksa fetch et
-    const res = await fetch("cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
+    // Fetch et
+    const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
     html = await res.text();
-    localStorage.setItem("sidebar-html", html);
+    localStorage.setItem(storageKey, html);
   }
 
-  // sayfaya ekle
+  // Sayfaya ekle
   container.innerHTML = html;
 
-  // Hamburger butonunu çalıştır
+  // Hamburger toggle
   const sidebar = document.getElementById("sidebar");
   const hamburgerBtn = document.getElementById("hamburgerBtn");
-  if (hamburgerBtn) {
+  if (hamburgerBtn && sidebar) {
     hamburgerBtn.addEventListener("click", () => {
       sidebar.classList.toggle("active");
     });
