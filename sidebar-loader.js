@@ -3,10 +3,10 @@ async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
 
   // cache varsa ordan al
-  let html = localStorage.getItem("sidebar-html");
+  let html = localStorage.getItem("cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
   if (!html) {
     // yoksa fetch et
-    const res = await fetch("sidebar.html");
+    const res = await fetch("cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
     html = await res.text();
     localStorage.setItem("sidebar-html", html);
   }
