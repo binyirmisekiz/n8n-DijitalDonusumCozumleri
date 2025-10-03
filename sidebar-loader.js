@@ -5,7 +5,7 @@
 
     try {
       // Query string parametrelerini al
-      const params = new URLSearchParams(document.currentScript.src.split("?")[1]);
+      const params = new URLSearchParams(document.currentScript.src.split("?")[1] || "");
       const logoUrl = params.get("logo"); // logo URL
 
       const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@ad45d69/sidebar.html");
@@ -17,7 +17,15 @@
       const logoAnchor = container.querySelector(".logo a");
 
       if (logoUrl && logoImg) {
-        logoImg.src = logoUrl;   // Görseli değiştir
+        // Kaymayı önlemek için mevcut width/height değerlerini koru
+        const w = logoImg.width || logoImg.getAttribute("width") || 200;
+        const h = logoImg.height || logoImg.getAttribute("height") || "auto";
+
+        logoImg.setAttribute("width", w);
+        if (h !== "auto") logoImg.setAttribute("height", h);
+
+        // Görseli güncelle
+        logoImg.src = logoUrl;
       }
 
       if (logoAnchor) {
