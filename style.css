@@ -63,6 +63,12 @@ html, body {
 
 /* Footer */
 .footer.corporate {
+  position: fixed;          /* Alt tarafa sabitle */
+  bottom: 0;                /* Sayfanın altına yapıştır */
+  left: 0;
+  width: 100%;              /* Tüm genişliği kapla */
+  height: 50px;             /* Sabit yükseklik (istersen ayarlayabilirsin) */
+
   padding: 12px 20px;
   font-size: 12px;
   color: #888;
@@ -72,12 +78,17 @@ html, body {
   border-top: 1px solid #eee;
   background: #fff;
   box-sizing: border-box;
-  
-  position: relative;
-bottom: 0;
-width: 100%;
+  z-index: 1000;            /* Sidebar altında kalmasın */
 }
-.footer-right { font-weight: 500; color: #555; }
+
+.footer-left {
+  margin-left: 220px;       /* Sidebar genişliği kadar sağa kaydır */
+}
+
+.footer-right { 
+  font-weight: 500; 
+  color: #555; 
+}
 
 /* Hamburger (mobilde) */
 .hamburger {
