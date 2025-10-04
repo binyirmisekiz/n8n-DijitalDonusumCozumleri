@@ -11,7 +11,7 @@
       const company = params.get("comp");
 
       // En güncel sidebar.html'i çek, cache atlamak için ts param ekle
-      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html?ts=" + Date.now());
+      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@latest/sidebar.html?ts=" + Date.now());
       const html = await res.text();
       container.innerHTML = html;
 
