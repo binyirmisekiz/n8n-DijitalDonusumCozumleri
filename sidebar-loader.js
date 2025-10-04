@@ -28,7 +28,14 @@
         pathParts[pathParts.length - 1] = "home";
         logoAnchor.href = `${window.location.origin}/${pathParts.join("/")}`;
       }
+      
+    // Firma adını footer içine yaz
+      const footerPlaceholder = container.querySelector("#footer-right-placeholder");
+      if (company && footerPlaceholder) {
+        footerPlaceholder.textContent = company;
+      }
 
+      
       const sidebar = document.getElementById("sidebar");
       const hamburgerBtn = document.getElementById("hamburgerBtn");
       hamburgerBtn?.addEventListener("click", () => {
