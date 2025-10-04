@@ -9,7 +9,7 @@
       const params = new URLSearchParams(scriptEl?.src.split("?")[1] || "");
       const logoUrl = params.get("logo");
 
-      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@ad45d69/sidebar.html");
+      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@main/sidebar.html");
       const html = await res.text();
       container.innerHTML = html;
 
