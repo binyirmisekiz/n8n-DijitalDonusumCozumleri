@@ -8,6 +8,7 @@
       const scriptEl = document.currentScript || document.querySelector('script[src*="sidebar-loader.js"]');
       const params = new URLSearchParams(scriptEl?.src.split("?")[1] || "");
       const logoUrl = params.get("logo");
+      const company = params.get("comp");
 
       // En güncel sidebar.html'i çek, cache atlamak için ts param ekle
       const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html?ts=" + Date.now());
