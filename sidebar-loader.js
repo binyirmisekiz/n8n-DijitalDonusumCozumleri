@@ -10,7 +10,7 @@
       const logoUrl = params.get("logo");
 
       // En güncel sidebar.html'i çek, cache atlamak için ts param ekle
-      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri@main/sidebar.html?ts=" + Date.now());
+      const res = await fetch("https://cdn.jsdelivr.net/gh/binyirmisekiz/n8n-DijitalDonusumCozumleri/sidebar.html");
       const html = await res.text();
       container.innerHTML = html;
 
